@@ -298,16 +298,19 @@
   }
 </style>
 </head>
-<body>
+<body style="display:none">
 <script>
   (function() {
-    const saved = sessionStorage.getItem('rc_auth');
-    if (saved !== 'ok') {
-      const pass = prompt("Contraseña de acceso:");
-      if (pass !== '3c0mm3rc3') {
-        window.location.replace('https://www.refaccionariacalifornia.com.mx');
-      } else {
+    var saved = sessionStorage.getItem('rc_auth');
+    if (saved === 'ok') {
+      document.body.style.display = '';
+    } else {
+      var pass = prompt("Contraseña de acceso:");
+      if (pass === '3c0mm3rc3') {
         sessionStorage.setItem('rc_auth', 'ok');
+        document.body.style.display = '';
+      } else {
+        window.location.replace('https://www.refaccionariacalifornia.com.mx');
       }
     }
   })();
