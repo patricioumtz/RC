@@ -299,6 +299,19 @@
 </style>
 </head>
 <body>
+ <script>
+  (function() {
+    const saved = sessionStorage.getItem('rc_auth');
+    if (saved !== 'ok') {
+      const pass = prompt("Contraseña de acceso:");
+      if (pass !== '3c0mm3rc3') {
+        document.body.innerHTML = '<div style="font-family:sans-serif;text-align:center;margin-top:20vh;color:#333"><h2>Acceso denegado</h2></div>';
+        throw new Error('Acceso denegado');
+      }
+      sessionStorage.setItem('rc_auth', 'ok');
+    }
+  })();
+</script>
 <div class="page">
 
   <header>
